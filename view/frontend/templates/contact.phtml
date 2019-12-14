@@ -1,0 +1,531 @@
+<?php  $_gridrecords = $block->getCollection(); 
+       $_optionValues = $block->getOptionValues(); 
+
+?>
+<?php
+function geocode($address){
+
+    // url encode the address
+  $address = urlencode($address);
+
+    // google map geocode api url
+  $url = "http://maps.google.com/maps/api/geocode/json?address={$address}";
+
+    // get the json response
+  $resp_json = file_get_contents($url);
+
+    // decode the json
+  $resp = json_decode($resp_json, true);
+
+    // response status will be 'OK', if able to geocode given address 
+  if($resp['status']=='OK'){
+
+        // get the important data
+    $lati = $resp['results'][0]['geometry']['location']['lat'];
+    $longi = $resp['results'][0]['geometry']['location']['lng'];
+    $formatted_address = $resp['results'][0]['formatted_address'];
+
+        // verify if data is complete
+    if($lati && $longi && $formatted_address){
+
+            // put the data in the array
+      $data_arr = array();            
+
+      array_push(
+        $data_arr, 
+        $lati, 
+        $longi, 
+        $formatted_address
+        );
+
+      return $data_arr;
+
+    }else{
+      return false;
+    }
+
+  }else{
+    return false;
+  }
+}
+
+
+
+$add_qry = $this->getstreet1().' '.$this->getstreet2().' '.$this->getcity().' '.$this->getregion().' '.$this->getzip().' '.$this->getcountry();
+
+//echo $add_qry.'ddddddd';
+$data_arr = geocode($add_qry);
+
+    // if able to geocode the address
+if($data_arr){
+
+  $latitude = $data_arr[0];
+  $longitude = $data_arr[1];
+  $formatted_address = $data_arr[2];
+}
+else{
+  $latitude = 0;
+  $longitude = 0;
+  $formatted_address = '';
+}
+
+
+
+     // $check_map = 	$this->isMapEnabled();
+
+?>
+<script 
+src="https://maps.googleapis.com/maps/api/js?key=<?php echo $this->getmapkey(); ?> ">
+</script>
+<?php 
+$om = \Magento\Framework\App\ObjectManager::getInstance();
+$obj = $om->get('Magento\Framework\HTTP\PhpEnvironment\RemoteAddress');
+$ip =  $obj->getRemoteAddress();
+
+$ip=$_SERVER['REMOTE_ADDR'];
+
+$xml = simplexml_load_file("http://www.geoplugin.net/xml.gp?ip=58.65.183.10");
+
+$country = (string)$xml->geoplugin_countryName ;
+
+?>
+
+<script type="text/javascript">
+  function CaptchaResponse() {
+
+    var exists = document.getElementById("g-recaptcha-response");
+
+    if(exists == null){
+            //alert('not exists');
+          }
+          else{
+            var check = document.getElementById("g-recaptcha-response").value;
+           // alert(check);
+           if(check=='' || check == null){
+            document.getElementById("recaptcha").style.border = "1px solid #ea0e0e";
+            return false;
+          }
+          else{
+            document.getElementById("recaptcha").style.border = "none";
+            return true;
+          }
+
+        }
+
+      }
+    </script>
+  
+    <script type="text/javascript">
+    require(['jquery', // jquery Library
+
+
+        'jquery/ui' // Jquery UI Library
+        ], function ($) {
+
+          $( document ).ready(function() {
+
+           initialize();
+            		//google.maps.event.addDomListener(window, 'load', initialize);  
+              });
+
+
+        });
+    
+    function initialize() {
+
+    	var exists = document.getElementById("map");
+    	if(exists == null){
+           // alert('not exists');
+         }
+         else{
+         		 	var long = <?php echo $longitude; ?>//73.0373642;
+      			var lat = <?php echo $latitude; ?>//33.4819688;
+      		var myLatlng = new google.maps.LatLng(lat, long); // Change your location Latitude and Longitude 
+      		var mapOptions = {
+            zoom: 14,
+            center: myLatlng
+          }
+          var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+      	// Disabled Map Scroll in Contact Page 
+        map.setOptions({'scrollwheel': false});
+
+      	// Black and White style for Google Map
+        var contentString = '<?php echo $add_qry; ?>';
+        var infowindow = new google.maps.InfoWindow({
+          content: contentString
+        })
+      	// Google Map Maker 
+        var marker = new google.maps.Marker({
+          position: myLatlng,
+          map: map,
+        });
+
+        marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
+      }
+
+
+    }
+
+  </script>
+
+  <style type="text/css">
+    #recaptcha {
+      display: inline-block;
+      position: relative;
+      margin-top:25px;
+
+    }
+    .share_box{
+     position:fixed;
+     width:40px;
+
+     left: 0px;
+     z-index: 1000;
+     top: 390px;
+     height: 155px;
+   }
+   .rc-anchor-normal {
+    height: 74px;
+    width: 250px;
+  }
+  
+  input:invalid{
+
+   border: 1px solid red;
+
+}
+</style>
+
+ 
+  <style>
+      /* Always set the map height explicitly to define the size of the div
+      * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+     /*.main_block .form_block .input_outer{ width:360px; margin:0 35px 30px 0; float:left};*/
+     .input_outer{ width:560px; margin:0 35px 30px 0; float:left}
+      .main_block .form_block .input_outer { width: 48%; margin:5px 20px 10px 0px;}
+
+
+     .abs-field-date input, .field.date ._has-datepicker, .field-dob ._has-datepicker, .form-giftregistry-search .fields-specific-options .datetime-picker, .form.search.advanced .fields.range .field.date input, .form-giftregistry-edit .field.date input {
+    margin-right: 10px;
+    width: calc(100% - 33px);
+}
+    </style>
+
+
+    <div class="main_block">
+      <div class="map_container">
+        <div class="page_title">
+          <h1><?php echo $this->pageheading(); ?></h1>
+          <div style="text-align:center;">
+            <?php echo $this->pagedescription(); ?>
+
+
+          </div>
+        </div>
+        <?php if($this->isMapEnabled() && $add_qry!='') { ?>
+          <div class="map_block" style="height: 300px;width: 100%;position: relative;" id="map"></div>
+     
+        </div>
+        <?php } ?>
+        <div class="contact_container">
+          <div class="inner_container">
+            <ul>
+              <?php if ($this->getphone()!='') {?>
+                <li>
+                  <h3><?php echo __('Phone Number') ?></h3>
+                  <p><?php echo $this->getphone(); ?>
+                    <br>
+                    <br></p>
+                  </li>
+                  <li class="divider"></li>
+                  <?php } ?>
+
+                  <?php if ($this->getStoreName() !='') { ?>
+                  
+                  <li> 
+                    <h3><?php echo $this->getStoreName(); ?></h3>
+                    <p><?php echo $this->getstreet1().' '.$this->getstreet2().' '.$this->getcity().','.$this->getzip();?>
+                      <br>
+                      <br></p>
+                    </li>
+                    <li class="divider"></li>
+                    <?php } ?>
+
+                    
+                     <?php if ($this->getstoreemail()!='') { ?>
+                      <li class="last">
+                        <h3><?php echo __('Email Us') ?></h3>
+                        <p><a href="#"><?php echo $this->getstoreemail(); ?></a>
+                          <br>
+                          <br></p>
+                        </li>
+                        <?php } ?>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="clear"></div>
+
+                  <div class="form_block">
+                    <div class="inner_container">
+                      <form 
+                      action="<?php echo $block->getFormAction(); ?>"
+                      id="contact-form"
+                      name="contact-form"
+                      onsubmit="return CaptchaResponse()"
+                      method="post"
+                      data-hasrequired="<?php echo __('* Required Fields') ?>"
+                      data-mage-init='{"validation":{}}'>
+
+
+                    <fieldset class="fieldset"> 
+                       <div>
+                        <div class="field name required input_outer">
+
+                          <div class="control">
+                            <span><?php echo __($this->nametittle()) ?></span>
+                            <input name="name" id="name" placeholder="<?php echo __($this->nametittle()) ?>" title="<?php echo __($this->nametittle()) ?>"  class="input-text" type="text" data-validate="{required:true}"/>
+                          </div>
+                        </div>
+                        <div class="field email required input_outer">
+
+                          <div class="control">
+                            <span><?php echo __($this->emailtittle()) ?></span>
+                            <input name="email" id="email" placeholder="<?php echo __($this->emailtittle()) ?>" title="<?php echo __($this->emailtittle()) ?>"  class="input-text" type="email" data-validate="{required:true, 'validate-email':true}"/>
+                          </div>
+                        </div>
+
+                        <?php if($this->phonetittle() != '') {?>
+                          <div class="field telephone input_outer">
+                            <div class="control">
+                               <span><?php echo __($this->phonetittle()) ?></span>
+                              <input name="phone" id="telephone" placeholder="<?php echo __($this->phonetittle()) ?>" title="<?php echo __($this->phonetittle()) ?>" class="input-text" type="text" />
+                            </div>
+                          </div>
+                          <?php } ?>
+
+                          <?php if($this->subjecttittle() != '') {?>
+                            <div class="field subject input_outer">
+                              <div class="control">
+                                <span><?php echo __($this->subjecttittle()) ?></span>
+                                <input name="subject" id="subject" placeholder="<?php echo __($this->subjecttittle()) ?>" title="<?php echo __($this->subjecttittle()) ?>" class="input-text" type="text" />
+                              </div>
+                            </div>
+                            <?php } ?>
+                          </div>
+                          <div class="field comment required input_outer">
+                            <div class="control">
+                             <span><?php echo __($this->messagetittle()) ?></span>
+                              <textarea  name="message" class="input-text" placeholder="<?php echo __($this->messagetittle()) ?>" id="comment" title="<?php echo __($this->messagetittle()) ?>" class="input-text" cols="1" rows="6" data-validate="{required:true}"></textarea>
+                            </div>
+                          </div>
+                           <?php  
+
+                                $fme_contactus = [];
+                               
+       				foreach ($_gridrecords as $_gridrecord): ?>
+       				<?php $_id = $_gridrecord->getField_id();
+       				$_label = $_gridrecord->getLabel();                        
+       				$_placeholder = $_gridrecord->getPlaceholder();
+       				$_value = $_gridrecord->getValue();
+      		 		$_required = $_gridrecord->getRequired();
+       				$_type = $_gridrecord->getType(); 
+                                $_sortorder = $_gridrecord->getSortorder();
+                                $_validation = $_gridrecord->getValidation(); 
+                                $_status = $_gridrecord->getStatus(); ?>
+
+                       <?php if($_required=="no"):?>   
+                         <?php $_required = "false";?>                   
+                       <?php endif;?>
+
+                      <?php if($_required=="yes"):?> 
+                          <?php $_required = "true";?>                     
+                       <?php endif;?>
+                            
+                       <?php if($_status==1):?> 
+                        <?php if($_type=="input_field"):?>
+                        <div class="field name required input_outer">                       
+                          <div class="control">
+                  <span><?php echo $_label ?></span><input name="<?php echo 'fme_contactus['.$_id.']'?>" id="<?php echo $_id?>" placeholder="<?php echo $_placeholder ?>"   class="input-text" type="<?php echo $_validation?>" data-validate="{required:<?php echo $_required ?>}"/>
+
+                          </div>
+                        </div>
+                        <?php endif;?>
+                       <?php endif;?>
+
+                       <?php if($_status==1):?> 
+                        <?php if($_type=="textarea_field"):?>
+                        <div class="field comment required input_outer">
+                   <div class="control">                          
+                   <span><?php echo $_label ?></span><textarea name="<?php echo 'fme_contactus['.$_id.']'?>" placeholder="<?php echo $_placeholder ?>" id="<?php echo $_id?>" class="input-text" cols="1" rows="6" data-validate="{required:<?php echo $_required ?>}" ></textarea>
+
+                            </div>
+                          </div> 
+                         <?php endif;?>
+                        <?php endif;?>
+
+                      <?php if($_status==1):?>
+                       <?php if($_type=="select_field"):?>                     
+                       <div class="field select required input_outer">
+                            <div class="control"> 
+                        <span><?php echo $_label ?></span> 
+                      <select name="<?php echo 'fme_contactus['.$_id.']'?>" data-validate="{required:<?php echo $_required ?>}">
+                            <?php foreach($_optionValues->getData() as $option):  ?> 
+                       		 <?php $opt_val = $option['value']; 
+                             		 $opt_id = $option['field_id'];?>
+
+                                  	<?php if($_id == $opt_id):?>
+                                 	 <option><?php echo $opt_val?></option>
+                                  <?php endif;?>
+                           	<?php endforeach; ?>
+</select>
+
+                           </div>
+                          </div> 
+                         <?php endif;?> 
+                        <?php endif;?>
+
+                 <?php if($_status==1):?>
+                 <?php if($_type=="upload_field"):?>
+                           <div class="field file required input_outer">                      
+                             <div class="control">                                                
+         	              <span><?php echo $_label?></span><br><input name="<?php echo 'fme_contactus['.$_id.']'?>" id="<?php echo $_id?>" type="file" accept=".png,.jpg,.zip,.docx,.txt,.ppt"/>
+
+                            </div>
+                          </div>
+        	        <?php endif;?>
+                   <?php endif;?>
+
+                   <?php if($_status==1):?>
+                   <?php if($_type=="checkbox_field"):?>                                  	    
+                     <div class="field checkbox required input_outer">                      
+                             <div class="control"> 
+                     <span><?php echo $_label?> </span>
+                     <?php foreach($_optionValues->getData() as $option):  ?> 
+                       		 <?php $opt_val = $option['value']; 
+                             		 $opt_id = $option['field_id'];?>
+
+                                  	<?php if($_id == $opt_id):?>
+                       <input name="<?php echo 'fme_contactus['.$_id.'][]'?>" type="checkbox" value="<?php echo $opt_val?>"><label><?php echo $opt_val?></label>
+                                  <?php endif;?>
+                           	<?php endforeach; ?>   
+                            </div>
+                          </div>                  
+        	      <?php endif;?>
+                   <?php endif;?>
+
+                      <?php if($_status==1):?>
+                       <?php if($_type=="radio_field"):?>   
+                         <div class="field radio required input_outer">                      
+                             <div class="control"> 
+                       <span><?php echo $_label?> </span>
+                       <?php foreach($_optionValues->getData() as $option):  ?> 
+                       		 <?php $opt_val = $option['value']; 
+                             		 $opt_id = $option['field_id'];?>
+
+                                  	<?php if($_id == $opt_id):?>
+                       <input name="<?php echo 'fme_contactus['.$_id.'][]'?>"  type="radio" value="<?php echo $opt_val?>"><label><?php echo $opt_val?></label>
+                                  <?php endif;?>
+                           	<?php endforeach; ?>            
+                           </div>
+                         </div>  
+        	        <?php endif;?>
+                       <?php endif;?>
+
+                  
+                      <?php if($_status==1):?>
+                       <?php if($_type=="multiselect_field"):?>  
+                          <div class="field required input_outer ">                      
+                            <div class="control"> 
+                     <span><?php echo $_label?> </span>
+                      <br><select multiple="multiple" name="<?php echo 'fme_contactus['.$_id.'][]'?>" id="<?php echo $_id?>" data-validate="{required:<?php echo $_required ?>}">                  
+                          <?php foreach($_optionValues->getData() as $option):  ?> 
+                       		 <?php $opt_val = $option['value']; 
+                             		 $opt_id = $option['field_id'];?>
+
+                                  	<?php if($_id == $opt_id):?>
+                                 	 <option><?php echo $opt_val?></option>
+                                  <?php endif;?>
+                           	<?php endforeach; ?>
+                        </select> 
+                        </div>
+                       </div>    
+         		<?php endif;?>
+                       <?php endif;?>
+
+                      <?php if($_status==1):?>
+                       <?php if($_type=="date_field"):?>
+                           <div class="field date required input_outer">                      
+                             <div class="control">                                              
+         	             <span><?php echo $_label?></span><br><input name="<?php echo 'fme_contactus['.$_id.']'?>"  type="text" class="calendar_inputField" id="<?php echo $_id ?>"/>
+                 
+                            </div>
+                          </div>
+
+           <script type="text/javascript">
+            require(["jquery", "mage/calendar"], function($){
+                    $(".calendar_inputField").calendar({
+                        showsTime: false,
+                        
+                        dateFormat: "M/d/Y",
+                        buttonImage: "http://10.10.10.151/mage222/pub/static/version1517983650/frontend/Magento/luma/en_US/Magento_Theme/calendar.png",
+                        yearRange: "-120y:c+nn",
+                       buttonText: "Select Date", maxDate: "-1d", changeMonth: true, changeYear: true, showOn: "both"
+})
+            });
+            </script>
+        
+        	        <?php endif;?>
+
+                      <?php endif;?>
+
+                           <?php endforeach;?>
+
+
+                          <?php if($this->isCaptchaEnabled()) { ?>
+                         
+                           <div class="g-recaptcha" name="recaptcha" id="recaptcha" data-sitekey="<?php echo $this->getsitekey(); ?>"></div>
+                            
+                            <?php } ?>
+
+
+                           <!-- <?php echo $block->getChildHtml('form.additional.info'); ?> -->
+
+                          </fieldset>
+                          <div class="actions-toolbar">
+                            <div class="primary">
+
+                              
+                              <input type="hidden" name="ip" id="ip" value="<?php echo $ip; ?>" />
+                              <input type="hidden" name="country" id="country" value="<?php echo $country; ?>" />
+                              <input type="hidden" name="hideit" id="hideit" value="" />
+                             <button type="submit" name="submit" id="submit"  title="<?php /* @escapeNotVerified */ echo __($this->buttontext()) ?>" class="action submit primary">
+                                <span><?php /* @escapeNotVerified */ echo __($this->buttontext()) ?></span>
+                              </button>
+                            </div>
+                          </div>
+
+                        </form>
+
+
+                        <div class="clear"></div>
+
+                      </div>
+                    </div>
+
+
+
+                  </div>

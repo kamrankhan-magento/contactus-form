@@ -1,0 +1,1695 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">contactus_form_index.contactus_index_data_source</item>
+            <item name="deps" xsi:type="string">contactus_form_index.contactus_index_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">General Information</item>
+        <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">contactus_form_index</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+        <item name="buttons" xsi:type="array">
+            <item name="back" xsi:type="string">FME\Contactus\Block\Adminhtml\Contactus\Edit\BackButton</item>
+            <item name="delete" xsi:type="string">FME\Contactus\Block\Adminhtml\Contactus\Edit\DeleteButton</item>
+            <item name="save" xsi:type="string">FME\Contactus\Block\Adminhtml\Contactus\Edit\SaveFormButton</item>
+
+        </item>
+    </argument>
+    <dataSource name="contactus_form_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">FME\Contactus\Model\Form\DataProvider</argument>
+            <argument name="name" xsi:type="string">contactus_index_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">field_id</argument>
+            <argument name="requestFieldName" xsi:type="string">field_id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="submit_url" xsi:type="url" path="contactus/form/save"/>
+                </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+
+  <fieldset name="fieldset1">
+   <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">TextBox</item>
+                <item name="sortOrder" xsi:type="number">20</item>
+               <item name="collapsible" xsi:type="boolean">true</item>
+            </item>
+    </argument>
+
+        <container name="answers_dynamic">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">                   
+                    <item name="collapsibleHeader" xsi:type="boolean">true</item> 
+                    <item name="columnsHeader" xsi:type="boolean">false</item> 
+                    <item name="component" xsi:type="string">Magento_Ui/js/dynamic-rows/dynamic-rows</item>
+                    <item name="template" xsi:type="string">FME_Contactus/dynamic-rows/grid</item>
+                    
+                    <item name="componentType" xsi:type="string">dynamicRows</item>
+                    <item name="recordTemplate" xsi:type="string">record</item>
+                    
+                    <item name="deleteButtonLabel" xsi:type="string">Remove</item>
+                    <item name="addButtonLabel" xsi:type="string">Add New</item>
+                    <item name="deleteProperty" xsi:type="boolean">false</item>   
+                    <item name="collapsible" xsi:type="boolean">true</item>               
+                </item>
+            </argument>             
+           <container name="record">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Add New</item>
+                        <item name="component" xsi:type="string" translate="true">Magento_Ui/js/dynamic-rows/record</item>
+                        <item name="isTemplate" xsi:type="boolean">true</item>
+                        <item name="is_collection" xsi:type="boolean">true</item>
+                        <item name="showFallbackReset" xsi:type="boolean">false</item>
+                        <item name="collapsible" xsi:type="boolean">true</item> 
+                    </item>
+                </argument> 
+       <field name="field_id">
+          <argument name="data" xsi:type="array">
+             <item name="config" xsi:type="array">
+                <item name="additionalClasses" xsi:type="array">
+             <item name="admin__field-small" xsi:type="boolean">true</item>
+          </item>
+              <item name="dataType" xsi:type="string">text</item>
+              <item name="formElement" xsi:type="string">input</item>
+              <item name="visible" xsi:type="boolean">false</item>
+              <item name="source" xsi:type="string">form</item>
+              <item name="sortOrder" xsi:type="number">20</item>
+              <item name="dataScope" xsi:type="string">field_id</item>
+              <item name="validation" xsi:type="array">
+              <item name="required-entry" xsi:type="boolean">true</item>
+           </item>
+          </item>
+       </argument> 
+       </field> 
+
+       <field name="label">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="additionalClasses" xsi:type="array">
+                <item name="admin__field-small" xsi:type="boolean">true</item>
+            </item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="placeholder" xsi:type="string">Enter Label</item>
+                    <item name="label" xsi:type="string" translate="true">Label</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">form</item>
+                    <item name="sortOrder" xsi:type="number">22</item>
+                    <item name="dataScope" xsi:type="string">label</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+       </argument> 
+       </field>   
+           
+       <field name="placeholder">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="additionalClasses" xsi:type="array">
+                        <item name="admin__field-x-medium" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="dataType" xsi:type="string">text</item>
+                     <item name="placeholder" xsi:type="string">Enter Placeholder</item>
+                    <item name="readonly" xsi:type="boolean">true</item> 
+                    <item name="label" xsi:type="string" translate="true">Placeholder</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">form</item>
+                    <item name="sortOrder" xsi:type="number">30</item>
+                    <item name="dataScope" xsi:type="string">placeholder</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item> 
+                </item>
+            </argument>
+       </field>
+
+     <field name="required">
+             <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">FME\Contactus\Model\Config\Source\Required</item>
+                    <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">32</item>
+                     <item name="label" xsi:type="string" translate="true">Required</item>
+                         <item name="formElement" xsi:type="string">select</item>
+                         <item name="rawOptions" xsi:type="boolean">true</item>
+                      <item name="dataScope" xsi:type="string">required</item>
+                 </item>
+             </argument>
+        </field>
+
+        <field name="validation">
+             <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">FME\Contactus\Model\Config\Source\Options</item>
+                    <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">33</item>
+                     <item name="label" xsi:type="string" translate="true">Validation</item>
+                         <item name="formElement" xsi:type="string">select</item>
+                         <item name="rawOptions" xsi:type="boolean">true</item>
+                      <item name="dataScope" xsi:type="string">validation</item>
+                 </item>
+             </argument>
+        </field> 
+
+        <field name="sortorder">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="additionalClasses" xsi:type="array">
+                            <item name="admin__field-small" xsi:type="boolean">true</item>
+                        </item>
+                            <item name="dataType" xsi:type="string">text</item>
+                             <item name="placeholder" xsi:type="string">Enter SortOrder</item>
+                            <item name="label" xsi:type="string" translate="true">SortOrder</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">form</item>
+                            <item name="sortOrder" xsi:type="number">37</item>
+                            <item name="dataScope" xsi:type="string">sortorder</item>
+                        </item>
+               </argument> 
+         </field>
+
+         <field name="type">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="readonly" xsi:type="boolean">true</item> 
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="source" xsi:type="string">form</item>
+                    <item name="default" xsi:type="string">input_field</item>
+                    <item name="sortOrder" xsi:type="number">39</item>
+                    <item name="dataScope" xsi:type="string">type</item>                  
+                </item>
+            </argument>
+         </field>
+        <field name="status">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="readonly" xsi:type="boolean">true</item> 
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="source" xsi:type="string">form</item>
+                    <item name="default" xsi:type="string">1</item>
+                    <item name="sortOrder" xsi:type="number">40</item>
+                    <item name="dataScope" xsi:type="string">status</item>                  
+                </item>
+            </argument>
+         </field>
+
+
+         <field name="create_date">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="additionalClasses" xsi:type="array">
+                        <item name="admin__field-small" xsi:type="boolean">true</item>
+                    </item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="label" xsi:type="string" translate="true"></item>                           
+                            <item name="sortOrder" xsi:type="number">34</item>                           
+                            <item name="visible" xsi:type="boolean">false</item> 
+                        </item>
+                    </argument>
+            </field>
+
+            <actionDelete>
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="componentType" xsi:type="string">actionDelete</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="fit" xsi:type="boolean">false</item>
+                            <item name="label" xsi:type="string">Actions</item>
+                            <item name="sortOrder" xsi:type="string">50</item>
+                            <item name="additionalClasses" xsi:type="string">data-grid-actions-cell</item>
+                            <item name="template" xsi:type="string">Magento_Backend/dynamic-rows/cells/action-delete</item>
+                        </item>
+                    </argument>
+                </actionDelete>
+            </container> 
+        </container>
+ </fieldset>
+
+<fieldset name="fieldset2">
+
+   <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Textarea</item>
+                <item name="sortOrder" xsi:type="number">21</item>
+               <item name="collapsible" xsi:type="boolean">true</item>
+            </item>
+    </argument>
+
+        <container name="answers_dynamic2">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="collapsibleHeader" xsi:type="boolean">true</item>
+                    <item name="columnsHeader" xsi:type="boolean">false</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/dynamic-rows/dynamic-rows</item>
+                    <item name="template" xsi:type="string">FME_Contactus/dynamic-rows/grid</item>
+                    
+                    <item name="componentType" xsi:type="string">dynamicRows</item>
+                    <item name="recordTemplate" xsi:type="string">record</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="deleteButtonLabel" xsi:type="string">Remove</item>
+                    <item name="addButtonLabel" xsi:type="string">Add New</item>
+                    <item name="deleteProperty" xsi:type="boolean">false</item>
+                </item>
+            </argument>           
+            <container name="record">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Add New</item>
+                        <item name="component" xsi:type="string" translate="true">Magento_Ui/js/dynamic-rows/record</item>
+                        <item name="isTemplate" xsi:type="boolean">true</item>
+                        <item name="is_collection" xsi:type="boolean">true</item>
+                        <item name="showFallbackReset" xsi:type="boolean">false</item>
+                    </item>
+                </argument>
+     <field name="field_id">
+          <argument name="data" xsi:type="array">
+             <item name="config" xsi:type="array">
+                <item name="additionalClasses" xsi:type="array">
+             <item name="admin__field-small" xsi:type="boolean">true</item>
+          </item>
+              <item name="dataType" xsi:type="string">text</item>
+              <item name="formElement" xsi:type="string">input</item>
+              <item name="visible" xsi:type="boolean">false</item>
+              <item name="source" xsi:type="string">form</item>
+              <item name="sortOrder" xsi:type="number">20</item>
+              <item name="dataScope" xsi:type="string">field_id</item>
+              <item name="validation" xsi:type="array">
+              <item name="required-entry" xsi:type="boolean">true</item>
+           </item>
+          </item>
+       </argument> 
+
+     </field>
+     <field name="label">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="additionalClasses" xsi:type="array">
+                <item name="admin__field-small" xsi:type="boolean">true</item>
+            </item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="placeholder" xsi:type="string">Enter Label</item>
+                    <item name="label" xsi:type="string" translate="true">Label</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">form</item>
+                    <item name="sortOrder" xsi:type="number">22</item>
+                    <item name="dataScope" xsi:type="string">label</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+       </argument> 
+     </field>     
+
+     <field name="placeholder">
+       <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+            <item name="additionalClasses" xsi:type="array">
+                <item name="admin__field-x-medium" xsi:type="boolean">true</item>
+            </item>
+            <item name="dataType" xsi:type="string">text</item>
+            <item name="placeholder" xsi:type="string">Enter Placeholder</item>
+            <item name="readonly" xsi:type="boolean">true</item> 
+            <item name="label" xsi:type="string" translate="true">Placeholder</item>
+            <item name="formElement" xsi:type="string">input</item>
+            <item name="source" xsi:type="string">form</item>
+            <item name="sortOrder" xsi:type="number">30</item>
+            <item name="dataScope" xsi:type="string">placeholder</item>
+            <item name="validation" xsi:type="array">
+                <item name="required-entry" xsi:type="boolean">true</item>
+            </item> 
+        </item>
+      </argument>
+   </field>
+
+    <field name="required">
+             <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">FME\Contactus\Model\Config\Source\Required</item>
+                    <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">32</item>
+                     <item name="label" xsi:type="string" translate="true">Required</item>
+                         <item name="formElement" xsi:type="string">select</item>
+                         <item name="rawOptions" xsi:type="boolean">true</item>
+                      <item name="dataScope" xsi:type="string">required</item>
+                 </item>
+             </argument>
+    </field>
+
+	<field name="sortorder">
+             <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                  <item name="additionalClasses" xsi:type="array">
+                        <item name="admin__field-small" xsi:type="boolean">true</item>
+                  </item>
+                  <item name="dataType" xsi:type="string">text</item> 
+                  <item name="placeholder" xsi:type="string">Enter SortOrder</item>
+                  <item name="label" xsi:type="string" translate="true">SortOrder</item>
+                  <item name="formElement" xsi:type="string">input</item>
+                  <item name="source" xsi:type="string">form</item>
+                  <item name="sortOrder" xsi:type="number">37</item>
+                  <item name="dataScope" xsi:type="string">sortorder</item>
+               </item>
+             </argument> 
+         </field>
+        <field name="type">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="readonly" xsi:type="boolean">true</item> 
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="source" xsi:type="string">form</item>
+                    <item name="default" xsi:type="string">textarea_field</item>
+                    <item name="sortOrder" xsi:type="number">39</item>
+                    <item name="dataScope" xsi:type="string">type</item>
+                   
+                </item>
+            </argument>
+        </field>
+        <field name="status">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="readonly" xsi:type="boolean">true</item> 
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="source" xsi:type="string">form</item>
+                    <item name="default" xsi:type="string">1</item>
+                    <item name="sortOrder" xsi:type="number">40</item>
+                    <item name="dataScope" xsi:type="string">status</item>                  
+                </item>
+            </argument>
+         </field>
+          <field name="create_date">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="additionalClasses" xsi:type="array">
+                        <item name="admin__field-small" xsi:type="boolean">true</item>
+                    </item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            
+                            <item name="label" xsi:type="string" translate="true"></item>
+                            
+                            <item name="sortOrder" xsi:type="number">34</item>
+                            
+                            <item name="visible" xsi:type="boolean">false</item> 
+                            
+                        </item>
+                    </argument>
+            </field>
+            <actionDelete>
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="componentType" xsi:type="string">actionDelete</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="fit" xsi:type="boolean">false</item>
+                            <item name="label" xsi:type="string">Actions</item>
+                            <item name="sortOrder" xsi:type="string">50</item>
+                            <item name="additionalClasses" xsi:type="string">data-grid-actions-cell</item>
+                            <item name="template" xsi:type="string">Magento_Backend/dynamic-rows/cells/action-delete</item>
+                        </item>
+                    </argument>
+                </actionDelete>
+            </container>
+        </container>
+</fieldset>
+
+<fieldset name="fieldset3">
+   <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Dropdown</item>
+                <item name="sortOrder" xsi:type="number">22</item>
+               <item name="collapsible" xsi:type="boolean">true</item>
+            </item>
+    </argument>
+        <container name="answers_dynamic3">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="collapsibleHeader" xsi:type="boolean">true</item>
+                    <item name="columnsHeader" xsi:type="boolean">false</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/dynamic-rows/dynamic-rows</item>
+                    <item name="template" xsi:type="string">FME_Contactus/dynamic-rows/grid</item>
+                    
+                    <item name="componentType" xsi:type="string">dynamicRows</item>
+                    <item name="recordTemplate" xsi:type="string">record</item>
+                    <item name="deleteButtonLabel" xsi:type="string">Remove</item>
+                    <item name="addButtonLabel" xsi:type="string">Add New</item>
+                    <item name="deleteProperty" xsi:type="boolean">false</item>
+                   
+                </item>
+            </argument>
+            <container name="record">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Add New</item>
+                        <item name="component" xsi:type="string" translate="true">Magento_Ui/js/dynamic-rows/record</item>
+                        <item name="isTemplate" xsi:type="boolean">true</item>
+                        <item name="is_collection" xsi:type="boolean">true</item>
+                        <item name="showFallbackReset" xsi:type="boolean">false</item>
+                    </item>
+                </argument>
+           <field name="field_id">
+                  <argument name="data" xsi:type="array">
+                     <item name="config" xsi:type="array">
+                        <item name="additionalClasses" xsi:type="array">
+                     <item name="admin__field-small" xsi:type="boolean">true</item>
+                  </item>
+                      <item name="dataType" xsi:type="string">text</item>
+                      <item name="label" xsi:type="string" translate="true">Field ID</item>
+                      <item name="formElement" xsi:type="string">input</item>
+                      <item name="visible" xsi:type="boolean">false</item>
+                      <item name="source" xsi:type="string">form</item>
+                      <item name="sortOrder" xsi:type="number">20</item>
+                      <item name="dataScope" xsi:type="string">field_id</item>
+                      <item name="validation" xsi:type="array">
+                      <item name="required-entry" xsi:type="boolean">true</item>
+                   </item>
+                  </item>
+               </argument>  
+           </field> 
+            <field name="label">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="additionalClasses" xsi:type="array">
+                        <item name="admin__field-small" xsi:type="boolean">true</item>
+                    </item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="placeholder" xsi:type="string">Enter Label</item>
+                            <item name="label" xsi:type="string" translate="true">Label</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">form</item>
+                            <item name="sortOrder" xsi:type="number">22</item>
+                            <item name="dataScope" xsi:type="string">label</item>
+                            <item name="validation" xsi:type="array">
+                                <item name="required-entry" xsi:type="boolean">true</item>
+                            </item>
+                        </item>
+               </argument> 
+         </field>     
+                
+ <container name="answers_dynamic7">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="collapsibleHeader" xsi:type="boolean">true</item>
+                    <item name="columnsHeader" xsi:type="boolean">false</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/dynamic-rows/dynamic-rows</item>
+                    <item name="template" xsi:type="string">FME_Contactus/dynamic-rows/grid</item>
+                    
+                    <item name="componentType" xsi:type="string">dynamicRows</item>
+                    <item name="recordTemplate" xsi:type="string">record</item>
+                    <item name="deleteButtonLabel" xsi:type="string">Remove</item>
+                    <item name="addButtonLabel" xsi:type="string">Add Values</item>
+                    <item name="deleteProperty" xsi:type="boolean">false</item>
+                   
+                </item>
+            </argument>
+            <container name="record">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Add Values</item>
+                        <item name="component" xsi:type="string" translate="true">Magento_Ui/js/dynamic-rows/record</item>
+                        <item name="isTemplate" xsi:type="boolean">true</item>
+                        <item name="is_collection" xsi:type="boolean">true</item>
+                        <item name="showFallbackReset" xsi:type="boolean">false</item>
+                    </item>
+                </argument>
+              
+        <field name="value">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="additionalClasses" xsi:type="array">
+                        <item name="admin__field-x-small" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="readonly" xsi:type="boolean">true</item> 
+                    <item name="label" xsi:type="string" translate="true">Value</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">form</item>
+                    <item name="sortOrder" xsi:type="number">31</item>
+                    <item name="dataScope" xsi:type="string">value</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item> 
+                </item>
+            </argument>
+        </field>
+        <actionDelete>
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="componentType" xsi:type="string">actionDelete</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="fit" xsi:type="boolean">false</item>
+                            <item name="label" xsi:type="string">Actions</item>
+                            <item name="sortOrder" xsi:type="string">50</item>
+                            <item name="additionalClasses" xsi:type="string">data-grid-actions-cell</item>
+                            <item name="template" xsi:type="string">Magento_Backend/dynamic-rows/cells/action-delete</item>
+                        </item>
+                    </argument>
+                </actionDelete>
+            </container>
+  </container>
+
+        <field name="required">
+             <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">FME\Contactus\Model\Config\Source\Required</item>
+                    <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">32</item>
+                     <item name="label" xsi:type="string" translate="true">Required</item>
+                         <item name="formElement" xsi:type="string">select</item>
+                         <item name="rawOptions" xsi:type="boolean">true</item>
+                      <item name="dataScope" xsi:type="string">required</item>
+                 </item>
+             </argument>
+        </field>
+
+       <field name="sortorder">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="additionalClasses" xsi:type="array">
+                            <item name="admin__field-small" xsi:type="boolean">true</item>
+                        </item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="placeholder" xsi:type="string">Enter SortOrder</item>
+                            <item name="label" xsi:type="string" translate="true">SortOrder</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">form</item>
+                            <item name="sortOrder" xsi:type="number">37</item>
+                            <item name="dataScope" xsi:type="string">sortorder</item>
+                        </item>
+               </argument> 
+            </field>
+        <field name="type">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="readonly" xsi:type="boolean">true</item> 
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="source" xsi:type="string">form</item>
+                    <item name="default" xsi:type="string">select_field</item>
+                    <item name="sortOrder" xsi:type="number">39</item>
+                    <item name="dataScope" xsi:type="string">type</item>
+                   
+                </item>
+            </argument>
+        </field>
+        <field name="status">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="readonly" xsi:type="boolean">true</item> 
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="source" xsi:type="string">form</item>
+                    <item name="default" xsi:type="string">1</item>
+                    <item name="sortOrder" xsi:type="number">40</item>
+                    <item name="dataScope" xsi:type="string">status</item>                  
+                </item>
+            </argument>
+         </field>
+        <field name="create_date">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="additionalClasses" xsi:type="array">
+                        <item name="admin__field-small" xsi:type="boolean">true</item>
+                    </item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            
+                            <item name="label" xsi:type="string" translate="true"></item>
+                            
+                            <item name="sortOrder" xsi:type="number">34</item>
+                            
+                            <item name="visible" xsi:type="boolean">false</item> 
+                            
+                        </item>
+                    </argument>
+            </field>
+            <actionDelete>
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="componentType" xsi:type="string">actionDelete</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="fit" xsi:type="boolean">false</item>
+                            <item name="label" xsi:type="string">Actions</item>
+                            <item name="sortOrder" xsi:type="string">50</item>
+                            <item name="additionalClasses" xsi:type="string">data-grid-actions-cell</item>
+                            <item name="template" xsi:type="string">Magento_Backend/dynamic-rows/cells/action-delete</item>
+                        </item>
+                    </argument>
+                </actionDelete>
+                </container>
+    </container>
+</fieldset>
+
+<fieldset name="fieldset4">
+   <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Checkbox</item>
+                <item name="sortOrder" xsi:type="number">23</item>
+               <item name="collapsible" xsi:type="boolean">true</item>
+            </item>
+    </argument>
+    <container name="answers_dynamic4">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="collapsibleHeader" xsi:type="boolean">true</item>
+                    <item name="columnsHeader" xsi:type="boolean">false</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/dynamic-rows/dynamic-rows</item>
+                    <item name="template" xsi:type="string">FME_Contactus/dynamic-rows/grid</item>                   
+                    <item name="componentType" xsi:type="string">dynamicRows</item>
+                    <item name="recordTemplate" xsi:type="string">record</item>
+                    <item name="deleteButtonLabel" xsi:type="string">Remove</item>
+                    <item name="addButtonLabel" xsi:type="string">Add New</item>
+                    <item name="deleteProperty" xsi:type="boolean">false</item>
+                   
+                </item>
+            </argument>
+            <container name="record">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Add New</item>
+                        <item name="component" xsi:type="string" translate="true">Magento_Ui/js/dynamic-rows/record</item>
+                        <item name="isTemplate" xsi:type="boolean">true</item>
+                        <item name="is_collection" xsi:type="boolean">true</item>
+                        <item name="showFallbackReset" xsi:type="boolean">false</item>
+                    </item>
+                </argument>
+               <field name="field_id">
+                  <argument name="data" xsi:type="array">
+                     <item name="config" xsi:type="array">
+                        <item name="additionalClasses" xsi:type="array">
+                     <item name="admin__field-small" xsi:type="boolean">true</item>
+                  </item>
+                      <item name="dataType" xsi:type="string">text</item>
+                      <item name="label" xsi:type="string" translate="true">Field Label</item>
+                      <item name="formElement" xsi:type="string">input</item>
+                      <item name="visible" xsi:type="boolean">false</item>
+                      <item name="source" xsi:type="string">form</item>
+                      <item name="sortOrder" xsi:type="number">25</item>
+                      <item name="dataScope" xsi:type="string">field_id</item>
+                      <item name="validation" xsi:type="array">
+                      <item name="required-entry" xsi:type="boolean">true</item>
+                   </item>
+                  </item>
+               </argument>  
+               </field> 
+              <field name="label">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="additionalClasses" xsi:type="array">
+                        <item name="admin__field-small" xsi:type="boolean">true</item>
+                    </item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="placeholder" xsi:type="string">Enter Label</item>
+                            <item name="label" xsi:type="string" translate="true">Label</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">form</item>
+                            <item name="sortOrder" xsi:type="number">22</item>
+                            <item name="dataScope" xsi:type="string">label</item>
+                            <item name="validation" xsi:type="array">
+                                <item name="required-entry" xsi:type="boolean">true</item>
+                            </item>
+                        </item>
+               </argument> 
+            </field>     
+         <container name="answers_dynamic_checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="collapsibleHeader" xsi:type="boolean">true</item>
+                    <item name="columnsHeader" xsi:type="boolean">false</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/dynamic-rows/dynamic-rows</item>
+                    <item name="template" xsi:type="string">FME_Contactus/dynamic-rows/grid</item>
+                    
+                    <item name="componentType" xsi:type="string">dynamicRows</item>
+                    <item name="recordTemplate" xsi:type="string">record</item>
+                    <item name="deleteButtonLabel" xsi:type="string">Remove</item>
+                    <item name="addButtonLabel" xsi:type="string">Add Values</item>
+                    <item name="deleteProperty" xsi:type="boolean">false</item>
+                   
+                </item>
+            </argument>
+            <container name="record">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Add Values</item>
+                        <item name="component" xsi:type="string" translate="true">Magento_Ui/js/dynamic-rows/record</item>
+                        <item name="isTemplate" xsi:type="boolean">true</item>
+                        <item name="is_collection" xsi:type="boolean">true</item>
+                        <item name="showFallbackReset" xsi:type="boolean">false</item>
+                    </item>
+                </argument>
+              
+        <field name="value">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="additionalClasses" xsi:type="array">
+                        <item name="admin__field-x-small" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="readonly" xsi:type="boolean">true</item> 
+                    <item name="label" xsi:type="string" translate="true">Value</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">form</item>
+                    <item name="sortOrder" xsi:type="number">31</item>
+                    <item name="dataScope" xsi:type="string">value</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item> 
+                </item>
+            </argument>
+        </field>
+        <actionDelete>
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="componentType" xsi:type="string">actionDelete</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="fit" xsi:type="boolean">false</item>
+                            <item name="label" xsi:type="string">Actions</item>
+                            <item name="sortOrder" xsi:type="string">50</item>
+                            <item name="additionalClasses" xsi:type="string">data-grid-actions-cell</item>
+                            <item name="template" xsi:type="string">Magento_Backend/dynamic-rows/cells/action-delete</item>
+                        </item>
+                    </argument>
+                </actionDelete>
+            </container>
+  </container>   
+        <field name="required">
+             <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">FME\Contactus\Model\Config\Source\Required</item>
+                    <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">32</item>
+                     <item name="label" xsi:type="string" translate="true">Required</item>
+                         <item name="formElement" xsi:type="string">select</item>
+                         <item name="rawOptions" xsi:type="boolean">true</item>
+                      <item name="dataScope" xsi:type="string">required</item>
+                 </item>
+             </argument>
+        </field>
+
+        <field name="sortorder">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="additionalClasses" xsi:type="array">
+                            <item name="admin__field-small" xsi:type="boolean">true</item>
+                        </item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="placeholder" xsi:type="string">Enter SortOrder</item>
+                            <item name="label" xsi:type="string" translate="true">SortOrder</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">form</item>
+                            <item name="sortOrder" xsi:type="number">37</item>
+                            <item name="dataScope" xsi:type="string">sortorder</item>
+                        </item>
+               </argument> 
+            </field>
+
+         <field name="type">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="readonly" xsi:type="boolean">true</item> 
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="source" xsi:type="string">form</item>
+                    <item name="default" xsi:type="string">checkbox_field</item>
+                    <item name="sortOrder" xsi:type="number">39</item>
+                    <item name="dataScope" xsi:type="string">type</item>
+                   
+                </item>
+            </argument>
+        </field>
+       <field name="status">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="readonly" xsi:type="boolean">true</item> 
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="source" xsi:type="string">form</item>
+                    <item name="default" xsi:type="string">1</item>
+                    <item name="sortOrder" xsi:type="number">40</item>
+                    <item name="dataScope" xsi:type="string">status</item>                  
+                </item>
+            </argument>
+         </field>
+        <field name="create_date">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="additionalClasses" xsi:type="array">
+                        <item name="admin__field-small" xsi:type="boolean">true</item>
+                    </item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            
+                            <item name="label" xsi:type="string" translate="true"></item>
+                            
+                            <item name="sortOrder" xsi:type="number">34</item>
+                            
+                            <item name="visible" xsi:type="boolean">false</item> 
+                            
+                        </item>
+                    </argument>
+            </field>
+            <actionDelete>
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="componentType" xsi:type="string">actionDelete</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="fit" xsi:type="boolean">false</item>
+                            <item name="label" xsi:type="string">Actions</item>
+                            <item name="sortOrder" xsi:type="string">50</item>
+                            <item name="additionalClasses" xsi:type="string">data-grid-actions-cell</item>
+                            <item name="template" xsi:type="string">Magento_Backend/dynamic-rows/cells/action-delete</item>
+                        </item>
+                    </argument>
+                </actionDelete>
+            </container>
+        </container>
+</fieldset>
+<fieldset name="fieldset6">
+
+   <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Radio Button</item>
+                <item name="sortOrder" xsi:type="number">24</item>
+               <item name="collapsible" xsi:type="boolean">true</item>
+            </item>
+    </argument>
+        <container name="answers_dynamic6">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="collapsibleHeader" xsi:type="boolean">true</item>
+                    <item name="columnsHeader" xsi:type="boolean">false</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/dynamic-rows/dynamic-rows</item>
+                    <item name="template" xsi:type="string">FME_Contactus/dynamic-rows/grid</item>
+                    
+                    <item name="componentType" xsi:type="string">dynamicRows</item>
+                    <item name="recordTemplate" xsi:type="string">record</item>
+                    <item name="deleteButtonLabel" xsi:type="string">Remove</item>
+                    <item name="addButtonLabel" xsi:type="string">Add New</item>
+                    <item name="deleteProperty" xsi:type="boolean">false</item>
+                   
+                </item>
+            </argument>
+            <container name="record">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Add New</item>
+                        <item name="component" xsi:type="string" translate="true">Magento_Ui/js/dynamic-rows/record</item>
+                        <item name="isTemplate" xsi:type="boolean">true</item>
+                        <item name="is_collection" xsi:type="boolean">true</item>
+                        <item name="showFallbackReset" xsi:type="boolean">false</item>
+                    </item>
+                </argument>
+               <field name="field_id">
+                  <argument name="data" xsi:type="array">
+                     <item name="config" xsi:type="array">
+                        <item name="additionalClasses" xsi:type="array">
+                     <item name="admin__field-small" xsi:type="boolean">true</item>
+                  </item>
+                      <item name="dataType" xsi:type="string">text</item>
+                      <item name="label" xsi:type="string" translate="true">Field ID</item>
+                      <item name="formElement" xsi:type="string">input</item>
+                      <item name="visible" xsi:type="boolean">false</item>
+                      <item name="source" xsi:type="string">form</item>
+                      <item name="sortOrder" xsi:type="number">25</item>
+                      <item name="dataScope" xsi:type="string">field_id</item>
+                      <item name="validation" xsi:type="array">
+                      <item name="required-entry" xsi:type="boolean">true</item>
+                   </item>
+                  </item>
+               </argument>  
+               </field> 
+              <field name="label">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="additionalClasses" xsi:type="array">
+                        <item name="admin__field-small" xsi:type="boolean">true</item>
+                    </item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="placeholder" xsi:type="string">Enter Label</item>
+                            <item name="label" xsi:type="string" translate="true">Label</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">form</item>
+                            <item name="sortOrder" xsi:type="number">22</item>
+                            <item name="dataScope" xsi:type="string">label</item>
+                            <item name="validation" xsi:type="array">
+                                <item name="required-entry" xsi:type="boolean">true</item>
+                            </item>
+                        </item>
+               </argument> 
+            </field>     
+<container name="answers_dynamic_radio">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="collapsibleHeader" xsi:type="boolean">true</item>
+                    <item name="columnsHeader" xsi:type="boolean">false</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/dynamic-rows/dynamic-rows</item>
+                    <item name="template" xsi:type="string">FME_Contactus/dynamic-rows/grid</item>
+                    
+                    <item name="componentType" xsi:type="string">dynamicRows</item>
+                    <item name="recordTemplate" xsi:type="string">record</item>
+                    <item name="deleteButtonLabel" xsi:type="string">Remove</item>
+                    <item name="addButtonLabel" xsi:type="string">Add Values</item>
+                    <item name="deleteProperty" xsi:type="boolean">false</item>
+                   
+                </item>
+            </argument>
+            <container name="record">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Add Values</item>
+                        <item name="component" xsi:type="string" translate="true">Magento_Ui/js/dynamic-rows/record</item>
+                        <item name="isTemplate" xsi:type="boolean">true</item>
+                        <item name="is_collection" xsi:type="boolean">true</item>
+                        <item name="showFallbackReset" xsi:type="boolean">false</item>
+                    </item>
+                </argument>
+              
+        <field name="value">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="additionalClasses" xsi:type="array">
+                        <item name="admin__field-x-small" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="readonly" xsi:type="boolean">true</item> 
+                    <item name="label" xsi:type="string" translate="true">Value</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">form</item>
+                    <item name="sortOrder" xsi:type="number">31</item>
+                    <item name="dataScope" xsi:type="string">value</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item> 
+                </item>
+            </argument>
+        </field>
+        <actionDelete>
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="componentType" xsi:type="string">actionDelete</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="fit" xsi:type="boolean">false</item>
+                            <item name="label" xsi:type="string">Actions</item>
+                            <item name="sortOrder" xsi:type="string">50</item>
+                            <item name="additionalClasses" xsi:type="string">data-grid-actions-cell</item>
+                            <item name="template" xsi:type="string">Magento_Backend/dynamic-rows/cells/action-delete</item>
+                        </item>
+                    </argument>
+                </actionDelete>
+            </container>
+  </container>
+        <field name="required">
+             <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">FME\Contactus\Model\Config\Source\Required</item>
+                    <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">32</item>
+                     <item name="label" xsi:type="string" translate="true">Required</item>
+                         <item name="formElement" xsi:type="string">select</item>
+                         <item name="rawOptions" xsi:type="boolean">true</item>
+                      <item name="dataScope" xsi:type="string">required</item>
+                 </item>
+             </argument>
+        </field>
+
+        <field name="sortorder">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="additionalClasses" xsi:type="array">
+                            <item name="admin__field-small" xsi:type="boolean">true</item>
+                        </item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="placeholder" xsi:type="string">Enter SortOrder</item>
+                            <item name="label" xsi:type="string" translate="true">SortOrder</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">form</item>
+                            <item name="sortOrder" xsi:type="number">37</item>
+                            <item name="dataScope" xsi:type="string">sortorder</item>
+                        </item>
+               </argument> 
+            </field>
+         <field name="type">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="readonly" xsi:type="boolean">true</item> 
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="source" xsi:type="string">form</item>
+                    <item name="default" xsi:type="string">radio_field</item>
+                    <item name="sortOrder" xsi:type="number">39</item>
+                    <item name="dataScope" xsi:type="string">type</item>
+                   
+                </item>
+            </argument>
+        </field>
+       <field name="status">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="readonly" xsi:type="boolean">true</item> 
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="source" xsi:type="string">form</item>
+                    <item name="default" xsi:type="string">1</item>
+                    <item name="sortOrder" xsi:type="number">40</item>
+                    <item name="dataScope" xsi:type="string">status</item>                  
+                </item>
+            </argument>
+         </field>
+        <field name="create_date">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="additionalClasses" xsi:type="array">
+                        <item name="admin__field-small" xsi:type="boolean">true</item>
+                    </item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            
+                            <item name="label" xsi:type="string" translate="true"></item>
+                            
+                            <item name="sortOrder" xsi:type="number">34</item>
+                            
+                            <item name="visible" xsi:type="boolean">false</item> 
+                            
+                        </item>
+                    </argument>
+            </field>
+            <actionDelete>
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="componentType" xsi:type="string">actionDelete</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="fit" xsi:type="boolean">false</item>
+                            <item name="label" xsi:type="string">Actions</item>
+                            <item name="sortOrder" xsi:type="string">50</item>
+                            <item name="additionalClasses" xsi:type="string">data-grid-actions-cell</item>
+                            <item name="template" xsi:type="string">Magento_Backend/dynamic-rows/cells/action-delete</item>
+                        </item>
+                    </argument>
+                </actionDelete>
+            </container>
+        </container>
+</fieldset>
+<fieldset name="fieldset5">
+
+   <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Upload File</item>
+                <item name="sortOrder" xsi:type="number">25</item>
+               <item name="collapsible" xsi:type="boolean">true</item>
+            </item>
+    </argument>
+        <container name="answers_dynamic5">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="collapsibleHeader" xsi:type="boolean">true</item>
+                    <item name="columnsHeader" xsi:type="boolean">false</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/dynamic-rows/dynamic-rows</item>
+                    <item name="template" xsi:type="string">FME_Contactus/dynamic-rows/grid</item>
+                    
+                    <item name="componentType" xsi:type="string">dynamicRows</item>
+                    <item name="recordTemplate" xsi:type="string">record</item>
+                    <item name="deleteButtonLabel" xsi:type="string">Remove</item>
+                    <item name="addButtonLabel" xsi:type="string">Add New</item>
+                    <item name="deleteProperty" xsi:type="boolean">false</item>
+                   
+                </item>
+            </argument>
+            <container name="record">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Add New</item>
+                        <item name="component" xsi:type="string" translate="true">Magento_Ui/js/dynamic-rows/record</item>
+                        <item name="isTemplate" xsi:type="boolean">true</item>
+                        <item name="is_collection" xsi:type="boolean">true</item>
+                        <item name="showFallbackReset" xsi:type="boolean">false</item>
+                    </item>
+                </argument>
+               <field name="field_id">
+                  <argument name="data" xsi:type="array">
+                     <item name="config" xsi:type="array">
+                        <item name="additionalClasses" xsi:type="array">
+                     <item name="admin__field-small" xsi:type="boolean">true</item>
+                  </item>
+                      <item name="dataType" xsi:type="string">text</item>
+                      <item name="formElement" xsi:type="string">input</item>
+                      <item name="visible" xsi:type="boolean">false</item>
+                      <item name="source" xsi:type="string">form</item>
+                      <item name="sortOrder" xsi:type="number">25</item>
+                      <item name="dataScope" xsi:type="string">field_id</item>
+                      <item name="validation" xsi:type="array">
+                      <item name="required-entry" xsi:type="boolean">true</item>
+                   </item>
+                  </item>
+               </argument>  
+               </field> 
+              <field name="label">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="additionalClasses" xsi:type="array">
+                        <item name="admin__field-small" xsi:type="boolean">true</item>
+                    </item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="placeholder" xsi:type="string">Enter Label</item>
+                            <item name="label" xsi:type="string" translate="true">Label</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">form</item>
+                            <item name="sortOrder" xsi:type="number">22</item>
+                            <item name="dataScope" xsi:type="string">label</item>
+                            <item name="validation" xsi:type="array">
+                                <item name="required-entry" xsi:type="boolean">true</item>
+                            </item>
+                        </item>
+               </argument> 
+            </field>   
+       
+          <field name="file_size">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="additionalClasses" xsi:type="array">
+                        <item name="admin__field-small" xsi:type="boolean">true</item>
+                    </item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="placeholder" xsi:type="string">Enter File Size</item>
+                            <item name="label" xsi:type="string" translate="true">File Size(MB)</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">form</item>
+                            <item name="sortOrder" xsi:type="number">23</item>
+                            <item name="dataScope" xsi:type="string">file_size</item>
+                            <item name="validation" xsi:type="array">
+                                <item name="required-entry" xsi:type="boolean">true</item>
+                            </item>
+                        </item>
+               </argument> 
+            </field>          
+
+         <field name="required">
+             <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">FME\Contactus\Model\Config\Source\Required</item>
+                    <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">32</item>
+                     <item name="label" xsi:type="string" translate="true">Required</item>
+                         <item name="formElement" xsi:type="string">select</item>
+                         <item name="rawOptions" xsi:type="boolean">true</item>
+                      <item name="dataScope" xsi:type="string">required</item>
+                 </item>
+             </argument>
+        </field>
+
+        <field name="sortorder">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="additionalClasses" xsi:type="array">
+                            <item name="admin__field-small" xsi:type="boolean">true</item>
+                        </item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="placeholder" xsi:type="string">Enter SortOrder</item>
+                            <item name="label" xsi:type="string" translate="true">SortOrder</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">form</item>
+                            <item name="sortOrder" xsi:type="number">37</item>
+                            <item name="dataScope" xsi:type="string">sortorder</item>
+                        </item>
+               </argument> 
+         </field>
+         <field name="status">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="readonly" xsi:type="boolean">true</item> 
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="source" xsi:type="string">form</item>
+                    <item name="default" xsi:type="string">1</item>
+                    <item name="sortOrder" xsi:type="number">40</item>
+                    <item name="dataScope" xsi:type="string">status</item>                  
+                </item>
+            </argument>
+         </field>
+         <field name="type">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="readonly" xsi:type="boolean">true</item> 
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="source" xsi:type="string">form</item>
+                    <item name="default" xsi:type="string">upload_field</item>
+                    <item name="sortOrder" xsi:type="number">39</item>
+                    <item name="dataScope" xsi:type="string">type</item>
+                   
+                </item>
+            </argument>
+        </field>
+        <field name="create_date">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="additionalClasses" xsi:type="array">
+                        <item name="admin__field-small" xsi:type="boolean">true</item>
+                    </item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            
+                            <item name="label" xsi:type="string" translate="true"></item>
+                            
+                            <item name="sortOrder" xsi:type="number">34</item>
+                            
+                            <item name="visible" xsi:type="boolean">false</item> 
+                            
+                        </item>
+                    </argument>
+            </field>
+            <actionDelete>
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="componentType" xsi:type="string">actionDelete</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="fit" xsi:type="boolean">false</item>
+                            <item name="label" xsi:type="string">Actions</item>
+                            <item name="sortOrder" xsi:type="string">50</item>
+                            <item name="additionalClasses" xsi:type="string">data-grid-actions-cell</item>
+                            <item name="template" xsi:type="string">Magento_Backend/dynamic-rows/cells/action-delete</item>
+                        </item>
+                    </argument>
+                </actionDelete>
+            </container>
+        </container>
+</fieldset>
+<fieldset name="fieldset8">
+
+   <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Multiselect</item>
+                <item name="sortOrder" xsi:type="number">26</item>
+               <item name="collapsible" xsi:type="boolean">true</item>
+            </item>
+    </argument>
+       <container name="answers_dynamic8">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="collapsibleHeader" xsi:type="boolean">true</item>
+                    <item name="columnsHeader" xsi:type="boolean">false</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/dynamic-rows/dynamic-rows</item>
+                    <item name="template" xsi:type="string">FME_Contactus/dynamic-rows/grid</item>
+                    
+                    <item name="componentType" xsi:type="string">dynamicRows</item>
+                    <item name="recordTemplate" xsi:type="string">record</item>
+                    <item name="deleteButtonLabel" xsi:type="string">Remove</item>
+                    <item name="addButtonLabel" xsi:type="string">Add New</item>
+                    <item name="deleteProperty" xsi:type="boolean">false</item>
+                   
+                </item>
+            </argument>
+            <container name="record">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Add New</item>
+                        <item name="component" xsi:type="string" translate="true">Magento_Ui/js/dynamic-rows/record</item>
+                        <item name="isTemplate" xsi:type="boolean">true</item>
+                        <item name="is_collection" xsi:type="boolean">true</item>
+                        <item name="showFallbackReset" xsi:type="boolean">false</item>
+                    </item>
+                </argument>
+           <field name="field_id">
+                  <argument name="data" xsi:type="array">
+                     <item name="config" xsi:type="array">
+                        <item name="additionalClasses" xsi:type="array">
+                     <item name="admin__field-small" xsi:type="boolean">true</item>
+                  </item>
+                      <item name="dataType" xsi:type="string">text</item>
+                      <item name="label" xsi:type="string" translate="true">Field ID</item>
+                      <item name="formElement" xsi:type="string">input</item>
+                      <item name="visible" xsi:type="boolean">false</item>
+                      <item name="source" xsi:type="string">form</item>
+                      <item name="sortOrder" xsi:type="number">20</item>
+                      <item name="dataScope" xsi:type="string">field_id</item>
+                      <item name="validation" xsi:type="array">
+                      <item name="required-entry" xsi:type="boolean">true</item>
+                   </item>
+                  </item>
+               </argument>  
+           </field> 
+
+           <field name="label">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="additionalClasses" xsi:type="array">
+                        <item name="admin__field-small" xsi:type="boolean">true</item>
+                    </item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="placeholder" xsi:type="string">Enter Label</item>
+                            <item name="label" xsi:type="string" translate="true">Label</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">form</item>
+                            <item name="sortOrder" xsi:type="number">22</item>
+                            <item name="dataScope" xsi:type="string">label</item>
+                            <item name="validation" xsi:type="array">
+                                <item name="required-entry" xsi:type="boolean">true</item>
+                            </item>
+                        </item>
+               </argument> 
+            </field> 
+
+     <container name="answers_dynamic9">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="collapsibleHeader" xsi:type="boolean">true</item>
+                    <item name="columnsHeader" xsi:type="boolean">false</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/dynamic-rows/dynamic-rows</item>
+                    <item name="template" xsi:type="string">FME_Contactus/dynamic-rows/grid</item>
+                    
+                    <item name="componentType" xsi:type="string">dynamicRows</item>
+                    <item name="recordTemplate" xsi:type="string">record</item>
+                    <item name="deleteButtonLabel" xsi:type="string">Remove</item>
+                    <item name="addButtonLabel" xsi:type="string">Add Values</item>
+                    <item name="deleteProperty" xsi:type="boolean">false</item>
+                   
+                </item>
+            </argument>
+            <container name="record">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Add Values</item>
+                        <item name="component" xsi:type="string" translate="true">Magento_Ui/js/dynamic-rows/record</item>
+                        <item name="isTemplate" xsi:type="boolean">true</item>
+                        <item name="is_collection" xsi:type="boolean">true</item>
+                        <item name="showFallbackReset" xsi:type="boolean">false</item>
+                    </item>
+                </argument>
+              
+        <field name="value">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="additionalClasses" xsi:type="array">
+                        <item name="admin__field-x-small" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="readonly" xsi:type="boolean">true</item> 
+                    <item name="label" xsi:type="string" translate="true">Value</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">form</item>
+                    <item name="sortOrder" xsi:type="number">31</item>
+                    <item name="dataScope" xsi:type="string">value</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item> 
+                </item>
+            </argument>
+        </field>
+
+        <actionDelete>
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="componentType" xsi:type="string">actionDelete</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="fit" xsi:type="boolean">false</item>
+                            <item name="label" xsi:type="string">Actions</item>
+                            <item name="sortOrder" xsi:type="string">50</item>
+                            <item name="additionalClasses" xsi:type="string">data-grid-actions-cell</item>
+                            <item name="template" xsi:type="string">Magento_Backend/dynamic-rows/cells/action-delete</item>
+                        </item>
+                    </argument>
+                </actionDelete>
+            </container>
+       </container>
+
+       <field name="required">
+             <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">FME\Contactus\Model\Config\Source\Required</item>
+                    <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">32</item>
+                     <item name="label" xsi:type="string" translate="true">Required</item>
+                         <item name="formElement" xsi:type="string">select</item>
+                         <item name="rawOptions" xsi:type="boolean">true</item>
+                      <item name="dataScope" xsi:type="string">required</item>
+                 </item>
+             </argument>
+        </field>
+
+       <field name="sortorder">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="additionalClasses" xsi:type="array">
+                            <item name="admin__field-small" xsi:type="boolean">true</item>
+                        </item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="placeholder" xsi:type="string">Enter SortOrder</item>
+                            <item name="label" xsi:type="string" translate="true">SortOrder</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">form</item>
+                            <item name="sortOrder" xsi:type="number">37</item>
+                            <item name="dataScope" xsi:type="string">sortorder</item>
+                        </item>
+               </argument> 
+            </field>
+
+        <field name="type">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="readonly" xsi:type="boolean">true</item> 
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="source" xsi:type="string">form</item>
+                    <item name="default" xsi:type="string">multiselect_field</item>
+                    <item name="sortOrder" xsi:type="number">39</item>
+                    <item name="dataScope" xsi:type="string">type</item>
+                   
+                </item>
+            </argument>
+        </field>
+        <field name="status">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="readonly" xsi:type="boolean">true</item> 
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="source" xsi:type="string">form</item>
+                    <item name="default" xsi:type="string">1</item>
+                    <item name="sortOrder" xsi:type="number">40</item>
+                    <item name="dataScope" xsi:type="string">status</item>                  
+                </item>
+            </argument>
+         </field>
+        <field name="create_date">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="additionalClasses" xsi:type="array">
+                        <item name="admin__field-small" xsi:type="boolean">true</item>
+                    </item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            
+                            <item name="label" xsi:type="string" translate="true"></item>
+                            
+                            <item name="sortOrder" xsi:type="number">34</item>
+                            
+                            <item name="visible" xsi:type="boolean">false</item> 
+                            
+                        </item>
+                    </argument>
+            </field>
+
+            <actionDelete>
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="componentType" xsi:type="string">actionDelete</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="fit" xsi:type="boolean">false</item>
+                            <item name="label" xsi:type="string">Actions</item>
+                            <item name="sortOrder" xsi:type="string">50</item>
+                            <item name="additionalClasses" xsi:type="string">data-grid-actions-cell</item>
+                            <item name="template" xsi:type="string">Magento_Backend/dynamic-rows/cells/action-delete</item>
+                        </item>
+                    </argument>
+                </actionDelete>
+                </container>
+    </container>
+</fieldset>
+
+
+<fieldset name="fieldset11">
+
+   <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Date</item>
+                <item name="sortOrder" xsi:type="number">28</item>
+               <item name="collapsible" xsi:type="boolean">true</item>
+            </item>
+    </argument>
+    <container name="answers_dynamic11">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="collapsibleHeader" xsi:type="boolean">true</item>
+                    <item name="columnsHeader" xsi:type="boolean">false</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/dynamic-rows/dynamic-rows</item>
+                    <item name="template" xsi:type="string">FME_Contactus/dynamic-rows/grid</item>
+                    
+                    <item name="componentType" xsi:type="string">dynamicRows</item>
+                    <item name="recordTemplate" xsi:type="string">record</item>
+                    <item name="deleteButtonLabel" xsi:type="string">Remove</item>
+                    <item name="addButtonLabel" xsi:type="string">Add New</item>
+                    <item name="deleteProperty" xsi:type="boolean">false</item>
+                   
+                </item>
+            </argument>
+            <container name="record">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Add New</item>
+                        <item name="component" xsi:type="string" translate="true">Magento_Ui/js/dynamic-rows/record</item>
+                        <item name="isTemplate" xsi:type="boolean">true</item>
+                        <item name="is_collection" xsi:type="boolean">true</item>
+                        <item name="showFallbackReset" xsi:type="boolean">false</item>
+                    </item>
+                </argument>
+               <field name="field_id">
+                  <argument name="data" xsi:type="array">
+                     <item name="config" xsi:type="array">
+                        <item name="additionalClasses" xsi:type="array">
+                     <item name="admin__field-small" xsi:type="boolean">true</item>
+                  </item>
+                      <item name="dataType" xsi:type="string">text</item>
+                      <item name="formElement" xsi:type="string">input</item>
+                      <item name="visible" xsi:type="boolean">false</item>
+                      <item name="source" xsi:type="string">form</item>
+                      <item name="sortOrder" xsi:type="number">25</item>
+                      <item name="dataScope" xsi:type="string">field_id</item>
+                      <item name="validation" xsi:type="array">
+                      <item name="required-entry" xsi:type="boolean">true</item>
+                   </item>
+                  </item>
+               </argument>  
+               </field> 
+              <field name="label">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="additionalClasses" xsi:type="array">
+                        <item name="admin__field-small" xsi:type="boolean">true</item>
+                    </item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="placeholder" xsi:type="string">Enter Label</item>
+                            <item name="label" xsi:type="string" translate="true">Label</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">form</item>
+                            <item name="sortOrder" xsi:type="number">22</item>
+                            <item name="dataScope" xsi:type="string">label</item>
+                            <item name="validation" xsi:type="array">
+                                <item name="required-entry" xsi:type="boolean">true</item>
+                            </item>
+                        </item>
+               </argument> 
+            </field>     
+       
+         <field name="required">
+             <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">FME\Contactus\Model\Config\Source\Required</item>
+                    <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">32</item>
+                     <item name="label" xsi:type="string" translate="true">Required</item>
+                         <item name="formElement" xsi:type="string">select</item>
+                         <item name="rawOptions" xsi:type="boolean">true</item>
+                      <item name="dataScope" xsi:type="string">required</item>
+                 </item>
+             </argument>
+        </field>
+
+        <field name="sortorder">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="additionalClasses" xsi:type="array">
+                            <item name="admin__field-small" xsi:type="boolean">true</item>
+                        </item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="placeholder" xsi:type="string">Enter SortOrder</item>
+                            <item name="label" xsi:type="string" translate="true">SortOrder</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">form</item>
+                            <item name="sortOrder" xsi:type="number">37</item>
+                            <item name="dataScope" xsi:type="string">sortorder</item>
+                        </item>
+               </argument> 
+            </field>
+         <field name="type">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="readonly" xsi:type="boolean">true</item> 
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="source" xsi:type="string">form</item>
+                    <item name="default" xsi:type="string">date_field</item>
+                    <item name="sortOrder" xsi:type="number">39</item>
+                    <item name="dataScope" xsi:type="string">type</item>
+                   
+                </item>
+            </argument>
+        </field>
+        <field name="status">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="readonly" xsi:type="boolean">true</item> 
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="source" xsi:type="string">form</item>
+                    <item name="default" xsi:type="string">1</item>
+                    <item name="sortOrder" xsi:type="number">40</item>
+                    <item name="dataScope" xsi:type="string">status</item>                  
+                </item>
+            </argument>
+         </field>
+        <field name="create_date">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="additionalClasses" xsi:type="array">
+                        <item name="admin__field-small" xsi:type="boolean">true</item>
+                    </item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            
+                            <item name="label" xsi:type="string" translate="true"></item>
+                            
+                            <item name="sortOrder" xsi:type="number">34</item>
+                            
+                            <item name="visible" xsi:type="boolean">false</item> 
+                            
+                        </item>
+                    </argument>
+            </field>
+            <actionDelete>
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="componentType" xsi:type="string">actionDelete</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="fit" xsi:type="boolean">false</item>
+                            <item name="label" xsi:type="string">Actions</item>
+                            <item name="sortOrder" xsi:type="string">50</item>
+                            <item name="additionalClasses" xsi:type="string">data-grid-actions-cell</item>
+                            <item name="template" xsi:type="string">Magento_Backend/dynamic-rows/cells/action-delete</item>
+                        </item>
+                    </argument>
+                </actionDelete>
+            </container>
+        </container>
+</fieldset>
+</form>

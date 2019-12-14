@@ -1,0 +1,55 @@
+<?php
+ $fields = $contactModel->getData();
+ foreach ($fields as $_gridrecord):
+               
+            $_id = $_gridrecord['contact_id'];
+     		
+            foreach ($submitModel->getData() as $option): 
+                             
+                $opt_id = $option['contact_id'];
+                $opt_label = $option['field_label'];
+                $opt_value = $option['field_value'];
+
+                $type = is_numeric($opt_label);                
+
+               if($type==false):
+
+                    $opt_label = ucfirst($opt_label);
+                    $opt_label = str_replace( '_', ' ', $opt_label);           
+        
+                    if($_id==$param):
+
+                       if($_id==$opt_id):
+
+                        echo "<tr><td>";
+                        echo $opt_label;
+                        echo $opt_value;
+                        echo "</td></tr>";
+                        
+                    endif;
+                  endif;  
+              endif;
+    
+                  
+                if($type==true):
+                    
+                     $gridModel = $this->_gridFactory->create()->load($opt_label,'field_id');
+                     $field_label = $gridModel->getLabel();
+
+                     $field_label = ucfirst($field_label);
+                     $field_label = str_replace( '_', ' ', $field_label);
+
+                   if($_id==$param):
+
+                       if($_id==$opt_id):
+
+                        echo "<tr><td>";
+                        echo $opt_label;
+                        echo $opt_value;
+                        echo "</td></tr>";
+
+                     endif;
+                  endif;                  
+                endif;                     
+            endforeach;                           
+        endforeach;    

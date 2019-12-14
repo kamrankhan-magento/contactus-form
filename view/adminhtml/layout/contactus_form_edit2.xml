@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd" >
+    <update handle="styles"/>
+    <update handle="editor"/>
+    <head>
+       <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" src_type="url"/>
+       <script src="FME_Contactus::js/fields.js"/>
+       
+    </head>
+    <body>
+
+        <referenceContainer name="content">
+             <block class="FME\Contactus\Block\Adminhtml\Form\Edit" name="edit_form"/>            
+        </referenceContainer>
+    </body>
+
+</page>

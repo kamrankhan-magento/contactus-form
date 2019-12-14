@@ -1,0 +1,24 @@
+hr{
+
+    border-width: 0px;
+}
+.admin__field-complex-elements{
+
+     width:12%;
+}
+.action-secondary{
+
+   width:100%;
+
+}
+td .action-secondary {
+
+   width:auto;
+
+}
+td .admin__field-complex-elements{
+
+     width:auto;
+}
+
+
